@@ -1,5 +1,7 @@
 package com.hubuu.nerfacier;
 
+import java.text.DecimalFormat;
+
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -16,7 +18,7 @@ public class JouerActivitity extends Activity implements SensorEventListener {
 
 	private SensorManager mSensorManager;
 	private Sensor mAccelerometer;
-	private float[] m_dOrentationValues = new float[3];
+	private float[] m_dOrentationValue = new float[3];
 	
 	private float[] m_dOldOrentationValues = new float[20];
 	private int currentIndex=0;
@@ -65,15 +67,23 @@ public class JouerActivitity extends Activity implements SensorEventListener {
 
 			tv.setText("X: "+event.values[0]+"\n "+"Y: "+event.values[1]+"\n "+"Z: "+event.values[2]+"\n" );
 			
-			m_dOrentationValues[0] = event.values[0];
-			m_dOrentationValues[1] = event.values[1];
-			m_dOrentationValues[2] = event.values[2];
-			
+			m_dOrentationValue[0] = event.values[0];
+			m_dOrentationValue[1] = event.values[1];
+			m_dOrentationValue[2] = event.values[2];
+			 
+			double y = Math.round(m_dOrentationValue[1]*100.0)/100.0;
+			currentIndex+=currentIndex%20
+			m_dOldOrentationValues[] =
 			if(m_dOrentationValues[1] <0 ){
 //				sm_dOldOrentationValues[];
 			}
 			Log.v("man", "end MAin");
 		}
+	}
+	
+	void doCalculate(float y){
+		
+	}
 	}
 
 }
