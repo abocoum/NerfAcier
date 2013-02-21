@@ -6,5 +6,6 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_jouer_activitity">JouerActivitity</string>
     <string name="title_activity_before_play">BeforePlayActivity</string>
+    <string name="title_activity_avant_jouer">AvantJouer</string>
 
 </resources>

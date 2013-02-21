@@ -20,16 +20,20 @@
         <activity
             android:name="com.hubuu.nerfacier.JouerActivitity"
             android:label="@string/title_activity_jouer_activitity" >
-           
         </activity>
         <activity
             android:name="com.hubuu.nerfacier.BeforePlayActivity"
             android:label="@string/title_activity_before_play" >
-             <intent-filter>
+                        <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.hubuu.nerfacier.AvantJouer"
+            android:label="@string/title_activity_avant_jouer" >
+
         </activity>
     </application>
 

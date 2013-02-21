@@ -8,9 +8,9 @@ public class Cercle {
 
 
 	public Cercle(){
-		rayon=0;
-		x=0; 
-		y=0;
+		rayon=50;
+		x=50; 
+		y=50;
 	}
 
 	public Cercle(int x, int y,int rayon){
