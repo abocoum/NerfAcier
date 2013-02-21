@@ -16,13 +16,18 @@
         <activity
             android:name="com.hubuu.nerfacier.MainActivity"
             android:label="@string/app_name" >
-            
         </activity>
         <activity
             android:name="com.hubuu.nerfacier.JouerActivitity"
             android:label="@string/title_activity_jouer_activitity" >
-            <intent-filter>
+           
+        </activity>
+        <activity
+            android:name="com.hubuu.nerfacier.BeforePlayActivity"
+            android:label="@string/title_activity_before_play" >
+             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

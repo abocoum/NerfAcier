@@ -18,9 +18,9 @@ public class JouerActivitity extends Activity implements SensorEventListener {
 
 	private SensorManager mSensorManager;
 	private Sensor mAccelerometer;
-	private float[] m_dOrentationValue = new float[3];
+	private double[] m_dOrentationValue = new double[3];
 	
-	private float[] m_dOldOrentationValues = new float[20];
+	private double[] m_dOldOrentationValues = new double[20];
 	private int currentIndex=0;
 	
 	private float depart;
@@ -33,6 +33,8 @@ public class JouerActivitity extends Activity implements SensorEventListener {
 		mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 		mAccelerometer = mSensorManager.getDefaultSensor(Sensor. TYPE_ORIENTATION );
 		mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+		
+		init ();
 	}
 
 	@Override
@@ -67,23 +69,41 @@ public class JouerActivitity extends Activity implements SensorEventListener {
 
 			tv.setText("X: "+event.values[0]+"\n "+"Y: "+event.values[1]+"\n "+"Z: "+event.values[2]+"\n" );
 			
-			m_dOrentationValue[0] = event.values[0];
-			m_dOrentationValue[1] = event.values[1];
-			m_dOrentationValue[2] = event.values[2];
+//			m_dOrentationValue[0] = event.values[0];
+//			m_dOrentationValue[1] = event.values[1];
+//			m_dOrentationValue[2] = event.values[2];
 			 
-			double y = Math.round(m_dOrentationValue[1]*100.0)/100.0;
-			currentIndex+=currentIndex%20
-			m_dOldOrentationValues[] =
-			if(m_dOrentationValues[1] <0 ){
-//				sm_dOldOrentationValues[];
-			}
+			
+			doCalculate(event.values[1]);	 
 			Log.v("man", "end MAin");
 		}
 	}
 	
-	void doCalculate(float y){
+	 void init () {
+		 // initialize old value to zero
+		 for(int i = 0; i<m_dOldOrentationValues.length; i++ ) {
+			 m_dOldOrentationValues[i]=0;
+		 }
+	 }
+	
+	void doCalculate(  float y){
+		double moyenne =0;
+		double aroundY = Math.round( y*100.0)/100.0;
+		m_dOldOrentationValues[currentIndex] = Math.abs(aroundY);
+		currentIndex = (currentIndex+1)%20;
+		
+		for(int i = 0; i<m_dOldOrentationValues.length; i++ ) {
+			moyenne+=m_dOldOrentationValues[i];
+		 }
+		
+		moyenne /=20;
+		moyenne = Math.round( moyenne*100.0)/100.0;
+		if (moyenne>1.0){
+			TextView tv = (TextView)findViewById(R.id.textview);
+			tv.setText( "mouv moy: "+" "+moyenne + tv.getText());
+		}
 		
 	}
-	}
+	
 
 }
